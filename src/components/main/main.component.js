@@ -1,6 +1,7 @@
 import React from "react";
 import "./main.css";
 import "../../public/css/app.css";
+import WaitingModal from "../waiting-modal/waiting-modal.component";
 
 export default class Main extends React.PureComponent {
 
@@ -10,20 +11,28 @@ export default class Main extends React.PureComponent {
       username: "",
       boardSize: 6,
       portals: 5,
-      rockets: 4
+      rockets: 4,
+      waiting: false,
+      disconnected: false
     };
     this.handleBoardSizeChange = event => this.setState({ boardSize: event.target.value });
     this.handlePortalNumberChange = event => this.setState({ portals: event.target.value });
     this.handleRocketNumberChange = event => this.setState({ rockets: event.target.value });
     this.handleUserInputChange = event => this.setState({ username: event.target.value });
-    this.handleStartButtonClick = event => { if (this.state.username.length > 0) console.log('11'), this.props.socket.emit('start', this.state) };
+    this.handleStartButtonClick = event => {
+      if (this.state.username.length > 0) {
+        this.setState({ waiting: true });
+        this.props.socket.emit('start', this.state);
+      }
+    };
   };
 
   componentWillMount() {
     const { socket, setId } = this.props;
-    // t1his.socket.emit('chat mounted', user);
-    socket.on('game-started', id => setId(id)
-    );
+    // this.socket.emit('chat mounted', user);
+    socket.on('game-started', id => setId(id));
+    socket.on("disconnect", () => this.setState({ disconnected: true}));
+    socket.on("connect", () => this.setState({ disconnected: false}));
   };
   componentWillUnmount() {
     // const { socket } = this.props;
@@ -31,7 +40,7 @@ export default class Main extends React.PureComponent {
   };
 
   render() {
-    const { username } = this.state;
+    const { username, waiting, disconnected } = this.state;
     return (
       <main id="space">
         <h1><span>Spaceships and Portals</span></h1>
@@ -45,7 +54,7 @@ export default class Main extends React.PureComponent {
               <button onClick={this.handleStartButtonClick}>Start game</button>
             </div>
             <div className="start-settings">
-              <label for="board-size">Board Size
+              <label htmlFor="board-size">Board Size
                 <select id="board-size" defaultValue="6" onChange={this.handleBoardSizeChange}>
                   <option value="5">5 x 5</option>
                   <option value="6">6 x 6</option>
@@ -54,7 +63,7 @@ export default class Main extends React.PureComponent {
                 </select>
               </label>
               <br />
-              <label for="portals">Number of Portals
+              <label htmlFor="portals">Number of Portals
                 <select id="portals" defaultValue="5" onChange={this.handlePortalNumberChange}>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -64,7 +73,7 @@ export default class Main extends React.PureComponent {
                 </select>
               </label>
               <br />
-              <label for="rockets">Number of Rockets
+              <label htmlFor="rockets">Number of Rockets
                 <select id="rockets" defaultValue="4" onChange={this.handleRocketNumberChange}>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -73,12 +82,14 @@ export default class Main extends React.PureComponent {
                 </select>
               </label>
             </div>
-            <div className="start-rocket"></div>
+            <div className="start-rocket" />
+            { waiting && <WaitingModal text="Waiting for other players!" /> }
+            { disconnected && <WaitingModal text="Server is unreachable!" />}
           </div>
         </div>
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
+        <div id='stars' />
+        <div id='stars2' />
+        <div id='stars3' />
       </main>
     );
   };
