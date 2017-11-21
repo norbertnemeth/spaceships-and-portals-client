@@ -1,0 +1,30 @@
+.player {
+    margin: {
+        top: 10px;
+        left: 10px;
+    }
+    position: absolute;
+    z-index: 10;
+    width: $cell-size;
+    height: $cell-size;
+    border: 2px solid transparent;
+    z-index: 15px;
+
+    &.player1 {
+        background: no-repeat center center url(../images/svg/astronaut.svg);
+        background-size: $icon-size;
+
+        &.same-cell {
+            background-position: 0px 0px;
+        }
+    }
+
+    &.player2 {
+        background: no-repeat center center url(../images/svg/robot.svg);
+        background-size: $icon-size;
+
+        &.same-cell {
+            background-position: 30px 30px;
+        }
+    } 
+}

@@ -1,0 +1,9 @@
+cur_dir = File.dirname(__FILE__)
+http_path = "/"
+css_dir = "css"
+sass_dir = "scss"
+images_dir = "img"
+javascripts_dir = "js"
+sourcemap = true
+output_style = :compressed # :nested | :expanded | :compact | :compressed
+environment = :production

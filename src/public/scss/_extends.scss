@@ -1,0 +1,82 @@
+/* Extends */
+
+// Resets
+
+// Margin/padding reset
+%reset {
+    margin: 0;
+    padding: 0;
+}
+
+// List reset
+// Horisontally reseted list
+%list-reset {
+    &,
+    & ul,
+    & li {
+        list-style: none;
+        @extend %reset;
+    }
+
+    & li {
+        display: block;
+        float: left;
+    }
+}
+
+// Resets list light
+// Vertically reseted list
+%list-reset-light {
+    &,
+		& ul,
+		& li {
+        list-style: none;
+        @extend %reset;
+    }
+}
+
+// Center element
+%center {
+    margin: {
+        right: auto;
+        left: auto;
+    }
+}
+
+// Center translate
+// Vertical and horizontal centering with translate
+// Parent must be relative positioned
+%center-translate {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Flex layout extends
+
+// Row layout
+// Creates a flex container with row direction
+%row-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+// Column layout
+// Creates a flex container with column direction
+%column-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+// Fitted item
+// Creates a place fitting flex item
+%fitted-item {
+  flex: 1 1 0;
+}
+
+// Dynamic item
+// Creates a flex item with a content depending size
+%dynamic-item {
+  flex: 0 0 auto;
+}

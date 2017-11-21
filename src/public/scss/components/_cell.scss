@@ -1,0 +1,43 @@
+$cell-color: $oc-grape-3;
+$cell-size: 106px;
+$cell-nmb-size: 32px;
+
+.cell {
+    margin: {
+        top: 10px;
+        left: 10px;
+    }
+    position: absolute;
+    z-index: 5;
+    width: $cell-size;
+    height: $cell-size;
+    border: 2px solid $cell-color;
+    border-radius: 12px;
+    background-color: rgba(white, 0.1);
+
+
+    .nmb {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: $cell-nmb-size;
+        height: $cell-nmb-size;
+        line-height: $cell-nmb-size;
+        text-align: center;
+        font: {
+            size: $cell-nmb-size / 2;
+            family: 'Orbitron', sans-serif;
+        }
+        margin: 0;
+        color: $cell-color;
+        
+    }
+
+    &.start {
+        
+    }
+
+    &.end {
+
+    }
+}

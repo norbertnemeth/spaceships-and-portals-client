@@ -1,0 +1,11 @@
+#board {
+    position: relative;
+    min-width: 300px;
+    min-height: 300px;
+    width: 600px;
+    z-index: 500;
+    border: 2px solid $oc-cyan-3;
+    border-radius: 12px;
+
+    @extend %center;
+}

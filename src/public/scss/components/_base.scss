@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+h1, h2, h3 {
+    margin-top: 0;
+    color: #FFF;
+    text-align: center;
+    letter-spacing: 5px;
+
+    span {
+        background: -webkit-linear-gradient($oc-cyan-3, $oc-cyan-9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        .win & {
+            background: -webkit-linear-gradient($oc-green-3, $oc-green-9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lose & {
+            background: -webkit-linear-gradient($oc-red-3, $oc-red-9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+h1 {
+    padding-top: 20px;
+    font-size: 50px;
+}
+
+h2 {
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+h3 {
+    padding-top: 17px;
+    font-size: 30px;
+}
+
+p {
+    margin-top: 0;
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: $oc-cyan-3;
+    text-align: center;
+    
+    span {
+        text-decoration: line-through;
+        opacity: 0.85;
+    }
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    color: $oc-cyan-3;
+    //text-align: center;
+    text-align: right;
+
+    select {
+        margin-left: 20px;
+        width: 60px;
+        background-color: $oc-cyan-3;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        padding: 4px;
+
+        &:hover {
+            background-color: $oc-orange-3;
+        }
+    }
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+}

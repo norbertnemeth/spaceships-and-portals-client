@@ -1,0 +1,39 @@
+.portal {
+    margin: {
+        top: 10px;
+        left: 10px;
+    }
+    position: absolute;
+    width: $cell-size;
+    height: $cell-size;
+    border: 2px solid transparent;
+
+    background: no-repeat center center url(../images/wormhole1.png);
+    background-size: $icon-size;
+    
+
+    &.portal1 {
+        background: no-repeat center center url(../images/wormhole1.png);
+        background-size: $icon-size;
+    }
+
+    &.portal2 {
+        background: no-repeat center center url(../images/wormhole2.png);
+        background-size: $icon-size;
+    }
+
+    &.portal3 {
+        background: no-repeat center center url(../images/wormhole3.png);
+        background-size: $icon-size;
+    }
+
+    &.portal4 {
+        background: no-repeat center center url(../images/wormhole4.png);
+        background-size: $icon-size;
+    }
+
+    &.portal5 {
+        background: no-repeat center center url(../images/wormhole5.png);
+        background-size: $icon-size;
+    }
+}

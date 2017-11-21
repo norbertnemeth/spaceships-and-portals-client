@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spaceships and Portals</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../public/css/app.css">
+</head>
+
+<body>
+  <main id="space">
+    <h1><span>Spaceships and Portals</span></h1>
+    <div id="game">
+      <div id="login">
+        <h2><span>Start Game!</span></h2>
+        <p>This is the quick <span>Snakes and Ladders</span> Spaceships and Portals game of Team Rocket!<br> To play add your
+          name and hit Start Game!</p>
+        <div class="start">
+          <input id="input" type="text">
+          <button id="send">Start game</button>
+        </div>
+        <div class="start-settings">
+          <label for="board-size">Board Size
+            <select id="board-size">
+                <option value="5">5 x 5</option>
+                <option value="6" selected>6 x 6</option>
+                <option value="7">7 x 7</option>
+                <option value="8">8 x 8</option>
+            </select>
+          </label>
+          <br>
+          <label for="portals">Number of Portals
+            <select id="portals">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+            </select>
+          </label>
+          <br>
+          <label for="rockets">Number of Rockets
+            <select id="rockets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4" selected>4</option>
+            </select>
+          </label>
+        </div>
+        <div class="start-rocket">
+        </div>
+        </dvi>
+      </div>
+
+      <!-- Stars -->
+      <div id='stars'></div>
+      <div id='stars2'></div>
+      <div id='stars3'></div>
+  </main>
+  <script src="/public/lib/jquery-3.2.1.min.js"></script>
+  <script>
+    $("#send").on('click', () => {
+      $(".start-rocket").addClass("lounched");
+      setTimeout(() => {
+        window.location.href=`/game?row=${$("#board-size").val()}&col=${$("#board-size").val()}&name=${$("#input").val()}&rockets=${$("#rockets").val()}&portals=${$("#portals").val()}`;
+      }, 2 * 1000);
+    });
+  </script>
+</body>
+
+</html>

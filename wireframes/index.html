@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Spaceships and portals</title>
+  </head>
+    <body>
+        <h1>Hello world</h1>
+        <div id="dice">Dice</div>
+        <script src="/public/lib/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:3005/');
+            var user = {name: 'player_ '+ (Math.random() * 1000).toString()}
+            startgame()
+            socket.on('initgame', function (data) {
+              console.log(data);
+
+              socket.on('nextMove', function(data){
+                  console.log('nextMove', data)
+              })
+              socket.on('wait', function(data){
+                  console.log('wait:', data)
+              })
+
+              gamemessage('connected', user)
+            });
+
+            function gamemessage(topic, data){
+              socket.emit(topic, data)
+            }
+
+            function startgame() {
+              socket.emit('startgame', {
+                user: user,
+                size: 64,
+                teleports: 6,
+                rockets: 64
+              })
+            }
+
+            $("#dice").on('click', nextStep)
+            function nextStep(){
+              socket.emit('mystep', user)
+            }
+
+          </script>
+  </body>
+</html>

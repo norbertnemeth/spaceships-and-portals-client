@@ -1,0 +1,93 @@
+/*
+login">
+                    <h2><span>Start Game!</span></h2>
+                    <div class="start">
+                        <input type="text">
+                        <button>Start game</button>
+                    </div>
+
+                    <div class="start-rocket">
+                    </div>
+*/
+
+#login {
+
+}
+
+.start {
+    text-align: center;
+
+    input {
+        width: 300px;
+        height: 30px;
+        background-color: black;
+        color: $oc-cyan-3;
+        border: {
+            color: $oc-cyan-3;
+            width: 3px;
+            style: solid;
+        }
+        border-radius: 8px;
+        outline: 0;
+        padding: 5px 10px;
+        font: {
+            size: 18px;
+            family: 'Orbitron', sans-serif;
+        }
+    }
+
+    button {
+        width: 160px;
+        height: 44px;
+        line-height: 42px;
+        border: none;
+        border-radius: 8px;
+        font: {
+            size: 18px;
+            family: 'Orbitron', sans-serif;
+        }
+        background-color: $oc-green-3;
+
+        @include transition(background-color 0.2s linear);
+
+        &:hover {
+            background-color: $oc-lime-3;
+        }
+
+        &:active {
+            background-color: $oc-orange-3;
+        }
+    }
+}
+
+.start-rocket {
+    $icon-size: 250px;
+    position: relative;
+    margin: {
+        top: 60px;
+        left: auto;
+        right: auto;
+    }
+    z-index: 600;
+    width: $icon-size;
+    height: $icon-size;
+
+    @include transition(margin-top 3s ease-out);
+
+    
+    background: no-repeat center center url(../images/svg/rocket.svg);
+    background-size: $icon-size;
+
+    &.lounched {
+        margin-top: -1500px;
+    }
+} 
+
+.start-settings {
+    width: 290px;
+    margin: {
+        top: 30px;
+        left: auto;
+        right: auto;
+    }
+}

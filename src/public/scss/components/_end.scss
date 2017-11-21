@@ -1,0 +1,46 @@
+.end {
+    width: 600px;
+    min-height: 200px;
+    position: fixed;
+    z-index: 2000;
+    @extend %center-translate;
+
+    background-color: black;
+    border: 2px solid $oc-green-3;
+
+    border-radius: 12px;
+    box-shadow: 0 0 100px 100px rgba(black, 0.45);
+
+
+    &.win .face {
+        $icon-size: 180px;
+        width: $icon-size;
+        height: $icon-size;  
+        margin: {
+            left: auto;
+            right: auto;
+            bottom: 60px;
+        } 
+    
+        background: no-repeat center center url(../images/svg/alien.svg);
+        background-size: $icon-size;
+    }
+
+    &.lose {
+        border: 2px solid $oc-red-5;
+
+        .face {
+            $icon-size: 180px;
+            width: $icon-size;
+            height: $icon-size;  
+            margin: {
+                left: auto;
+                right: auto;
+                bottom: 60px;
+            } 
+        
+            background: no-repeat center center url(../images/svg/alien_angry.svg);
+            background-size: $icon-size;
+        }
+    }
+}

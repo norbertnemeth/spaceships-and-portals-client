@@ -1,0 +1,29 @@
+.spaceship {
+    margin: {
+        top: 10px;
+        left: 10px;
+    }
+    position: absolute;
+    width: $cell-size;
+    height: $cell-size;
+    border: 2px solid transparent;
+    z-index: 10;
+
+    background: no-repeat center center url(../images/svg/space_shuttle2.svg);
+    background-size:  $icon-size;
+
+    &.spaceship2 {
+        background: no-repeat center center url(../images/svg/space_shuttle2.svg);
+        background-size:  $icon-size;
+    }
+
+    &.spaceship1 {
+        background: no-repeat center center url(../images/svg/space_shuttle.svg);
+        background-size:  $icon-size;
+    }
+
+    &.spaceship3 {
+        background: no-repeat center center url(../images/svg/ufo.svg);
+        background-size: $icon-size;
+    }
+}

@@ -1,0 +1,84 @@
+.dice {
+    position: absolute;
+    left: 105%;
+    top: 50%;
+    margin-top: -60px;
+    
+    min-width: 125px;
+    min-height: 125px;
+    background: center bottom no-repeat url('../images/dice.png');
+    cursor: pointer;
+
+    .nmb {
+        position: absolute;
+        bottom: 120%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: $oc-cyan-3;
+        font-size: 42px;
+        transform: rotateY(0turn);
+        text-shadow: 0 0 10px $oc-cyan-3;
+        font-family: 'Orbitron', sans-serif;
+
+        animation: {
+            name: rotate;
+            duration: 18.5s;
+            iteration-count: infinite;
+            timing-function: ease-out;
+        }
+    }
+
+    .beam {
+        $beam-width: 256px / 2;
+        $beam-height: 546px / 3;
+
+        height: $beam-height;
+        width: $beam-width;
+        background: no-repeat url('../images/beam.png');
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        margin-left: $beam-width / -2;
+        bottom: 96px;
+        opacity: 0.6;
+
+        animation: {
+            name: blink;
+            duration: 3s;
+            iteration-count: infinite;
+            timing-function: ease-out;
+        }
+    }
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotateY(0turn);
+	}
+	
+	50% {
+		transform: rotateY(1turn);
+	}
+	
+	100% {
+		transform: rotateY(0turn);
+	}
+}
+
+@keyframes blink {
+	0% {
+        display: block;
+        opacity: 0.6;
+    }
+
+    50% {
+        display: block;
+        opacity: 1;
+    }
+
+    0% {
+        display: block;
+        opacity: 0.6;
+    }
+}
