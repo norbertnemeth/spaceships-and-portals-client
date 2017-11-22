@@ -30,13 +30,9 @@ export default class Main extends React.PureComponent {
   componentWillMount() {
     const { socket, setId } = this.props;
     // this.socket.emit('chat mounted', user);
-    socket.on('game-started', id => setId(id));
-    socket.on("disconnect", () => this.setState({ disconnected: true}));
-    socket.on("connect", () => this.setState({ disconnected: false}));
-  };
-  componentWillUnmount() {
-    // const { socket } = this.props;
-    // socket.removeAllListeners(); //nem törli-e véletlen a kövi komponensét?
+    socket.on('game-started', id => { setId(id); this.props.history.push('/battlefield') });
+    socket.on('disconnect', () => this.setState({ disconnected: true }));
+    socket.on('connect', () => this.setState({ disconnected: false }));
   };
 
   render() {
@@ -83,8 +79,8 @@ export default class Main extends React.PureComponent {
               </label>
             </div>
             <div className="start-rocket" />
-            { waiting && <WaitingModal text="Waiting for other players!" /> }
-            { disconnected && <WaitingModal text="Server is unreachable!" />}
+            {waiting && <WaitingModal text="Waiting for other players!" />}
+            {disconnected && <WaitingModal text="Server is unreachable!" />}
           </div>
         </div>
         <div id='stars' />

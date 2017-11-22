@@ -9,6 +9,7 @@ import { Route, Redirect, Switch } from "react-router";
 import initialState from "./initial.state";
 import io from 'socket.io-client';
 import Main from "../src/components/main/main.container";
+import Battlefield from "../src/components/battlefield/battlefield.conatiner";
 
 const ENABLE_DEV_TOOLS = true;
 
@@ -25,6 +26,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/start-game" render={props => <Main socket={socket} {...props} />} />
+        <Route path="/battlefield" render={props => <Battlefield socket={socket} {...props} />} />
         <Redirect to="/start-game" />
       </Switch>
     </BrowserRouter>

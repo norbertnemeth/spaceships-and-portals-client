@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import main from "./main";
+import battlefield from "./battlefield";
 
 const appReducer = combineReducers({
-  main
+  main,
+  battlefield
 });
 
 export default (state, action) => {
