@@ -4,7 +4,7 @@ import "../../public/css/app.css";
 import Field from "../field/field.component";
 import FieldElement from "../field-element/field-element.component";
 import { table, tableSize } from "./battlefield.mock";
-import { fieldSize, extraPadding }  from "./battlefield.constans";
+import { fieldSize, extraPadding } from "./battlefield.constans";
 
 export default class Main extends React.PureComponent {
 
@@ -47,9 +47,12 @@ export default class Main extends React.PureComponent {
                   return (
                     <div key={`fieldconstainer_${idx}`}>
                       <Field key={`field_${idx}`} index={idx} top={top} left={left} />
-                      { item.characters && item.characters.map((character, index) =>
-                          <FieldElement key={`player_${index}`} type="player" value={character} extra={item.characters.length > 1 ? "same-cell" : ""} top={top} left={left} />
-                        )
+                      {item.characters && item.characters.map((character, index) =>
+                        <FieldElement key={`player_${index}`} type="player" value={character} extra={item.characters.length > 1 ? "same-cell" : ""} top={top} left={left} />
+                      )
+                      }
+                      {
+                        item.type && <FieldElement key={`${item.type}_${idx}`} type={item.type} value={item.value} top={top} left={left} />
                       }
                     </div>
                   )
