@@ -3,6 +3,7 @@ import "../../public/css/app.css";
 // import WaitingModal from "../waiting-modal/waiting-modal.component";
 import Field from "../field/field.component";
 import FieldElement from "../field-element/field-element.component";
+import Dice from "../dice/dice.component";
 import { table, tableSize } from "./battlefield.mock";
 import { fieldSize, extraPadding } from "./battlefield.constans";
 
@@ -58,6 +59,7 @@ export default class Main extends React.PureComponent {
                   )
                 })
               }
+              <Dice number="X" />
             </div>
           </div>
         }
