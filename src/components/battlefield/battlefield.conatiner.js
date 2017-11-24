@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import Battlefield from "./battlefield.component";
-import { setTable, getTable } from "../../state/battlefield";
+import { setTable, getTable, getTableSize } from "../../state/battlefield";
 
 const mapStateToProps = state => ({
-  table: getTable(state)
+  table: getTable(state),
+  tableSize: getTableSize(state)
 });
 
 const mapDispatchToProps = {
