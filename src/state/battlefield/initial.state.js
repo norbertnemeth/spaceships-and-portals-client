@@ -1,4 +1,6 @@
 export default ({
   table: [],
-  tableSize: {}
+  tableSize: {},
+  playerPositionsWithData: [],
+  youTurn: null
 });

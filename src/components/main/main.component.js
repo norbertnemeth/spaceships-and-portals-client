@@ -28,9 +28,9 @@ export default class Main extends React.PureComponent {
   };
 
   componentWillMount() {
-    const { socket, setId } = this.props;
+    const { socket, setIds } = this.props;
     // this.socket.emit('chat mounted', user);
-    socket.on('game-started', id => { setId(id); this.props.history.push('/battlefield') });
+    socket.on('game-started', ids => { setIds(ids); this.props.history.push('/battlefield') });
     socket.on('disconnect', () => this.setState({ disconnected: true }));
     socket.on('connect', () => this.setState({ disconnected: false }));
   };

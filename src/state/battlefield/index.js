@@ -22,6 +22,9 @@ export const setTable = createAction(
 
 export const getTable = state => state.battlefield.table;
 export const getTableSize = state => state.battlefield.tableSize;
+export const getPlayerPositionsWithData = state => state.battlefield.playerPositionsWithData;
+export const getYouTurn = state => state.battlefield.youTurn;
+
 
 /**
  * REDUCERS
@@ -29,7 +32,8 @@ export const getTableSize = state => state.battlefield.tableSize;
 
 export default handleActions(
   {
-    [setTable]: (state, { payload: { table, tableSize } }) => ({ ...state, table, tableSize })
+    [setTable]: (state, { payload: { table, tableSize, playerPositionsWithData, youTurn } }) =>
+      ({ ...state, table, tableSize, playerPositionsWithData, youTurn })
   },
   initialState
 );
