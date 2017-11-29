@@ -4,7 +4,7 @@ import "../../public/css/app.css";
 import Field from "../field/field.component";
 import FieldElement from "../field-element/field-element.component";
 import Dice from "../dice/dice.component";
-import { table, tableSize, playerPositionsWithData, youTurn, ownId } from "./battlefield.mock";
+// import { table, tableSize, playerPositionsWithData, youTurn, ownId } from "./battlefield.mock";
 import { fieldSize, extraPadding } from "./battlefield.constans";
 
 export default class Main extends React.PureComponent {
@@ -15,18 +15,23 @@ export default class Main extends React.PureComponent {
       waiting: true,
       disconnected: false
     };
+    this.handleDiceAttempt = () => {
+      const { gameId, socket } = this.props; 
+      socket.emit('dice-attempt', gameId);
+    };
   };
 
   componentWillMount() {
-    const { socket, setTable } = this.props;
+    const { socket, setTable, updateTable } = this.props;
     socket.on('table-generate-success', tableInfos => setTable(tableInfos));
+    socket.on('dice-result', tableInfos => updateTable(tableInfos));
     socket.on('disconnect', () => this.setState({ disconnected: true }));
     socket.on('connect', () => this.setState({ disconnected: false }));
   };
 
   render() {
     // const { waiting } = this.state;
-    // const { table, tableSize, playerPositionsWithData, youTurn, ownId } = this.props;
+    const { table, tableSize, playerPositionsWithData, youTurn, ownId } = this.props;
     const { column, row } = tableSize;
     let columnCounter = 0;
     return (
@@ -60,7 +65,7 @@ export default class Main extends React.PureComponent {
                   )
                 })
               }
-              <Dice number="X" />
+              <Dice number="X" diceAttempt={this.handleDiceAttempt} />
             </div>
           </div>
         }

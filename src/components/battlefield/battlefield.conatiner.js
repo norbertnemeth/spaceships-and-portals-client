@@ -5,10 +5,12 @@ import {
   getTable,
   getYouTurn,
   getTableSize,
-  getPlayerPositionsWithData
+  getPlayerPositionsWithData,
+  updateTable
 } from "../../state/battlefield";
 import {
-  getOwnId
+  getOwnId,
+  getGameId
 } from "../../state/main";
 
 const mapStateToProps = state => ({
@@ -16,11 +18,13 @@ const mapStateToProps = state => ({
   tableSize: getTableSize(state),
   playerPositionsWithData: getPlayerPositionsWithData(state),
   youTurn: getYouTurn(state),
-  ownId: getOwnId(state)
+  ownId: getOwnId(state),
+  gameId: getGameId(state)
 });
 
 const mapDispatchToProps = {
-  setTable
+  setTable,
+  updateTable
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Battlefield);

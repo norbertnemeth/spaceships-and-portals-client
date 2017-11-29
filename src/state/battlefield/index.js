@@ -5,7 +5,11 @@ import initialState from "./initial.state";
  * ACTION TYPES
  */
 
+// Set NEW table
 export const SET_TABLE = "SET_TABLE";
+// Update table
+export const UPDATE_TABLE = "UPDATE_TABLE";
+
 
 /**
  * ACTION CREATORS
@@ -14,6 +18,10 @@ export const SET_TABLE = "SET_TABLE";
 export const setTable = createAction(
   SET_TABLE,
   tableInfos => tableInfos
+);
+
+export const updateTable = createAction(
+  UPDATE_TABLE
 );
 
 /**
@@ -33,7 +41,9 @@ export const getYouTurn = state => state.battlefield.youTurn;
 export default handleActions(
   {
     [setTable]: (state, { payload: { table, tableSize, playerPositionsWithData, youTurn } }) =>
-      ({ ...state, table, tableSize, playerPositionsWithData, youTurn })
+      ({ ...state, table, tableSize, playerPositionsWithData, youTurn }),
+    [updateTable]: (state, { payload: { playerPositionsWithData, youTurn } }) =>
+      ({ ...state, playerPositionsWithData, youTurn })
   },
   initialState
 );
